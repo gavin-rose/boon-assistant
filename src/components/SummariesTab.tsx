@@ -62,7 +62,7 @@ export const SummariesTab: React.FC<SummariesTabProps> = ({
 
         <button
           onClick={handleGenerate}
-          disabled={isGenerating || totalItems === 0}
+          disabled={isGenerating || totalItems === 0 || isOffline}
           className="flex items-center gap-1.5 px-3 py-1 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700 disabled:opacity-50 shrink-0"
         >
           {isGenerating ? (
@@ -80,6 +80,19 @@ export const SummariesTab: React.FC<SummariesTabProps> = ({
           )}
         </button>
       </div>
+
+      {/* Offline warning banner */}
+      {isOffline && (
+        <div className="flex items-center gap-3 bg-amber-950/40 border border-amber-500/30 rounded-2xl p-4">
+          <Cloud className="h-5 w-5 text-amber-400 shrink-0" />
+          <div>
+            <h3 className="text-sm font-semibold text-amber-300">Cloud Synthesis Unavailable</h3>
+            <p className="text-xs text-amber-400/70 mt-0.5">
+              Cross-session synthesis requires a cloud connection to Firebase AI Logic. Reconnect or disable the Deadzone Simulator to generate your executive debrief.
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* When no data at all */}
       {totalItems === 0 ? (
