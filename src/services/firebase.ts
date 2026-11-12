@@ -7,14 +7,15 @@ import {
   Firestore 
 } from 'firebase/firestore';
 
-// Default config fallback (can be overridden via localStorage or env variables)
+// Connected Firebase Project: boon-hybrid-ai (921368184160)
 const defaultFirebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "AIzaSyDemoKeyForHackathonSubmissionOnly",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "***REMOVED***",
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "boon-hybrid-ai.firebaseapp.com",
   projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "boon-hybrid-ai",
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "boon-hybrid-ai.appspot.com",
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "123456789012",
-  appId: import.meta.env.VITE_FIREBASE_APP_ID || "1:123456789012:web:abcdef1234567890"
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "boon-hybrid-ai.firebasestorage.app",
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "921368184160",
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || "1:921368184160:web:078448a342d752dc9fca05",
+  measurementId: "G-Y52N2R51X6"
 };
 
 export function getStoredConfig() {
