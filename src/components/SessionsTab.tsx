@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mic, MicOff, Plus, Sparkles, BookOpen, MessageSquare, Zap, Clock, Trash2 } from 'lucide-react';
+import { Mic, MicOff, Plus, Sparkles, BookOpen, MessageSquare, Zap, Trash2 } from 'lucide-react';
 import { SessionData } from '../types';
 import { parseSessionNotesWithAI } from '../services/aiService';
 
@@ -113,20 +113,20 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({
   return (
     <div className="space-y-6">
       {/* Top action bar */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-zinc-950 p-4 rounded-2xl border border-zinc-800">
         <div>
           <h2 className="text-lg font-bold text-white flex items-center gap-2">
-            <BookOpen className="h-5 w-5 text-indigo-400" />
-            Conference Sessions & Keynotes
+            <BookOpen className="h-5 w-5 text-emerald-400" />
+            Conference Sessions and Keynotes
           </h2>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-zinc-400">
             Jot down rapid thoughts or dictate live. Gemini Nano structures takeaways, explains jargon, and drafts Q&A microphone questions instantly.
           </p>
         </div>
 
         <button
           onClick={() => setIsOpenForm(!isOpenForm)}
-          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 font-semibold text-xs text-white shadow-lg shadow-indigo-600/30 transition cursor-pointer"
+          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 font-semibold text-xs text-black transition cursor-pointer"
         >
           <Plus className="h-4 w-4" />
           <span>New Session Note</span>
@@ -137,17 +137,17 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({
       {isOpenForm && (
         <form
           onSubmit={handleSubmit}
-          className="bg-slate-900 p-5 rounded-2xl border border-indigo-500/30 shadow-2xl space-y-4 animate-in fade-in slide-in-from-top duration-200"
+          className="bg-zinc-950 p-5 rounded-2xl border border-zinc-800 space-y-4 animate-in fade-in slide-in-from-top duration-200"
         >
-          <div className="flex items-center justify-between pb-2 border-b border-slate-800">
-            <span className="text-sm font-semibold text-slate-200 flex items-center gap-2">
+          <div className="flex items-center justify-between pb-2 border-b border-zinc-800">
+            <span className="text-sm font-semibold text-zinc-200 flex items-center gap-2">
               <Zap className="h-4 w-4 text-amber-400" />
               On-Device Session Scribe (Gemini Nano)
             </span>
             <button
               type="button"
               onClick={handleLoadSample}
-              className="text-xs text-indigo-400 hover:text-indigo-300 underline flex items-center gap-1 cursor-pointer"
+              className="text-xs text-emerald-400 hover:text-emerald-300 underline flex items-center gap-1 cursor-pointer"
             >
               <Sparkles className="h-3.5 w-3.5" />
               Load Sample Keynote
@@ -156,40 +156,40 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
-              <label className="text-xs font-medium text-slate-400">Session Title</label>
+              <label className="text-xs font-medium text-zinc-400">Session Title</label>
               <input
                 type="text"
                 placeholder="e.g. Keynote: Local-First AI"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full mt-1 px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-sm text-slate-100 focus:outline-none focus:border-indigo-500"
+                className="w-full mt-1 px-3 py-2 bg-black border border-zinc-800 rounded-lg text-sm text-zinc-100 focus:outline-none focus:border-emerald-500"
               />
             </div>
             <div>
-              <label className="text-xs font-medium text-slate-400">Speaker / Track</label>
+              <label className="text-xs font-medium text-zinc-400">Speaker / Track</label>
               <input
                 type="text"
                 placeholder="e.g. Dr. Elena Rostova"
                 value={speaker}
                 onChange={(e) => setSpeaker(e.target.value)}
-                className="w-full mt-1 px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-sm text-slate-100 focus:outline-none focus:border-indigo-500"
+                className="w-full mt-1 px-3 py-2 bg-black border border-zinc-800 rounded-lg text-sm text-zinc-100 focus:outline-none focus:border-emerald-500"
               />
             </div>
             <div>
-              <label className="text-xs font-medium text-slate-400">Room / Hall</label>
+              <label className="text-xs font-medium text-zinc-400">Room / Hall</label>
               <input
                 type="text"
                 placeholder="e.g. Grand Ballroom A"
                 value={room}
                 onChange={(e) => setRoom(e.target.value)}
-                className="w-full mt-1 px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-sm text-slate-100 focus:outline-none focus:border-indigo-500"
+                className="w-full mt-1 px-3 py-2 bg-black border border-zinc-800 rounded-lg text-sm text-zinc-100 focus:outline-none focus:border-emerald-500"
               />
             </div>
           </div>
 
           <div>
             <div className="flex items-center justify-between mb-1">
-              <label className="text-xs font-medium text-slate-400">
+              <label className="text-xs font-medium text-zinc-400">
                 Raw Notes / Real-Time Thoughts
               </label>
               <button
@@ -197,8 +197,8 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({
                 onClick={toggleRecording}
                 className={`text-xs px-2.5 py-1 rounded-md flex items-center gap-1.5 transition ${
                   isRecording
-                    ? 'bg-red-500 text-white animate-pulse'
-                    : 'bg-slate-800 text-slate-300 hover:text-white'
+                    ? 'bg-amber-500 text-black animate-pulse font-semibold'
+                    : 'bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white'
                 }`}
               >
                 {isRecording ? <MicOff className="h-3.5 w-3.5" /> : <Mic className="h-3.5 w-3.5" />}
@@ -210,7 +210,7 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({
               placeholder="Type rough bullets or speak freely. Mention any dense acronyms or concepts you want unpacked..."
               value={rawNotes}
               onChange={(e) => setRawNotes(e.target.value)}
-              className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-sm text-slate-100 focus:outline-none focus:border-indigo-500 font-mono"
+              className="w-full px-3 py-2 bg-black border border-zinc-800 rounded-lg text-sm text-zinc-100 focus:outline-none focus:border-emerald-500 font-mono"
               required
             />
           </div>
@@ -219,23 +219,23 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({
             <button
               type="button"
               onClick={() => setIsOpenForm(false)}
-              className="px-4 py-2 text-xs font-medium text-slate-400 hover:text-white"
+              className="px-4 py-2 text-xs font-medium text-zinc-400 hover:text-white cursor-pointer"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isProcessing || !rawNotes.trim()}
-              className="flex items-center gap-2 px-5 py-2 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white font-semibold text-xs rounded-xl shadow-lg transition"
+              className="flex items-center gap-2 px-5 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-black font-semibold text-xs rounded-xl transition cursor-pointer"
             >
               {isProcessing ? (
                 <>
-                  <Zap className="h-4 w-4 animate-spin text-amber-300" />
+                  <Zap className="h-4 w-4 animate-spin text-black" />
                   <span>Processing on Device...</span>
                 </>
               ) : (
                 <>
-                  <Zap className="h-4 w-4 text-amber-300" />
+                  <Zap className="h-4 w-4 text-black" />
                   <span>Structure with Gemini Nano</span>
                 </>
               )}
@@ -246,10 +246,10 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({
 
       {/* Sessions List */}
       {sessions.length === 0 ? (
-        <div className="text-center py-16 border border-dashed border-slate-800 rounded-2xl bg-slate-900/30">
-          <BookOpen className="h-10 w-10 text-slate-600 mx-auto mb-3" />
-          <h3 className="text-sm font-semibold text-slate-300">No session notes yet</h3>
-          <p className="text-xs text-slate-500 max-w-sm mx-auto mt-1">
+        <div className="text-center py-16 border border-dashed border-zinc-800 rounded-2xl bg-zinc-950/40">
+          <BookOpen className="h-10 w-10 text-zinc-600 mx-auto mb-3" />
+          <h3 className="text-sm font-semibold text-zinc-300">No session notes yet</h3>
+          <p className="text-xs text-zinc-500 max-w-sm mx-auto mt-1">
             Click "New Session Note" or load the sample keynote to see on-device structuring in action.
           </p>
         </div>
@@ -258,14 +258,14 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({
           {sessions.map((session) => (
             <div
               key={session.id}
-              className="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 shadow-xl hover:border-slate-700 transition space-y-4"
+              className="bg-zinc-950 border border-zinc-800 rounded-2xl p-5 hover:border-zinc-700 transition space-y-4"
             >
               {/* Header */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 pb-3 border-b border-slate-800/80">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 pb-3 border-b border-zinc-800">
                 <div>
                   <h3 className="text-base font-bold text-white">{session.title}</h3>
-                  <div className="flex items-center gap-3 text-xs text-slate-400 mt-0.5">
-                    <span className="text-indigo-400 font-medium">{session.speaker}</span>
+                  <div className="flex items-center gap-3 text-xs text-zinc-400 mt-0.5">
+                    <span className="text-emerald-400 font-medium">{session.speaker}</span>
                     <span>•</span>
                     <span>{session.room}</span>
                   </div>
@@ -276,20 +276,20 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({
                   <span
                     className={`text-xs px-2.5 py-1 rounded-full font-mono flex items-center gap-1.5 border ${
                       session.inferenceSource === 'on_device'
-                        ? 'bg-amber-950/40 text-amber-300 border-amber-600/30'
-                        : 'bg-emerald-950/40 text-emerald-300 border-emerald-600/30'
+                        ? 'bg-amber-950/30 text-amber-300 border-amber-600/40'
+                        : 'bg-emerald-950/30 text-emerald-300 border-emerald-600/40'
                     }`}
                   >
                     <Zap className="h-3 w-3 text-amber-400" />
                     <span>
-                      {session.inferenceSource === 'on_device' ? '⚡ On-Device' : '☁️ Cloud'}{' '}
+                      {session.inferenceSource === 'on_device' ? 'Local' : 'Cloud'}{' '}
                       [{session.latencyMs}ms]
                     </span>
                   </span>
 
                   <button
                     onClick={() => onDeleteSession(session.id)}
-                    className="p-1.5 text-slate-500 hover:text-red-400 transition"
+                    className="p-1.5 text-zinc-500 hover:text-amber-400 transition cursor-pointer"
                     title="Delete session"
                   >
                     <Trash2 className="h-4 w-4" />
@@ -300,13 +300,13 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({
               {/* Takeaways */}
               {session.structuredNotes?.takeaways && session.structuredNotes.takeaways.length > 0 && (
                 <div>
-                  <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+                  <h4 className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-1.5">
                     Key Actionable Takeaways
                   </h4>
                   <ul className="space-y-1">
                     {session.structuredNotes.takeaways.map((point, idx) => (
-                      <li key={idx} className="text-xs text-slate-300 flex items-start gap-2">
-                        <span className="text-indigo-400 font-bold">•</span>
+                      <li key={idx} className="text-xs text-zinc-200 flex items-start gap-2">
+                        <span className="text-emerald-400 font-bold">•</span>
                         <span>{point}</span>
                       </li>
                     ))}
@@ -317,17 +317,17 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({
               {/* Jargon Glossary */}
               {session.structuredNotes?.jargonGlossary && session.structuredNotes.jargonGlossary.length > 0 && (
                 <div>
-                  <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                  <h4 className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">
                     Live Jargon Glossary (Explained On-Device)
                   </h4>
                   <div className="flex flex-wrap gap-2">
                     {session.structuredNotes.jargonGlossary.map((j, idx) => (
                       <div
                         key={idx}
-                        className="bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-300"
+                        className="bg-black border border-zinc-800 rounded-lg px-2.5 py-1.5 text-xs text-zinc-200"
                       >
                         <span className="font-semibold text-amber-300 mr-1.5">{j.term}:</span>
-                        <span className="text-slate-400">{j.definition}</span>
+                        <span className="text-zinc-400">{j.definition}</span>
                       </div>
                     ))}
                   </div>
@@ -336,14 +336,14 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({
 
               {/* Microphone Q&A Polished Questions */}
               {session.structuredNotes?.qaQuestions && session.structuredNotes.qaQuestions.length > 0 && (
-                <div className="bg-slate-950/60 p-3 rounded-xl border border-indigo-950">
-                  <h4 className="text-xs font-semibold text-indigo-300 flex items-center gap-1.5 mb-1.5">
+                <div className="bg-black p-3 rounded-xl border border-zinc-800">
+                  <h4 className="text-xs font-semibold text-emerald-400 flex items-center gap-1.5 mb-1.5">
                     <MessageSquare className="h-3.5 w-3.5" />
                     Microphone-Ready Q&A Questions
                   </h4>
                   <ul className="space-y-1">
                     {session.structuredNotes.qaQuestions.map((q, idx) => (
-                      <li key={idx} className="text-xs text-slate-300 italic">
+                      <li key={idx} className="text-xs text-zinc-300 italic">
                         "{q}"
                       </li>
                     ))}
@@ -352,9 +352,9 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({
               )}
 
               {/* Raw notes expandable/collapsible */}
-              <details className="text-xs text-slate-500 pt-1">
-                <summary className="cursor-pointer hover:text-slate-300">View raw notes</summary>
-                <p className="mt-2 p-2 bg-slate-950 rounded text-slate-400 font-mono text-[11px] leading-relaxed">
+              <details className="text-xs text-zinc-500 pt-1">
+                <summary className="cursor-pointer hover:text-zinc-300">View raw notes</summary>
+                <p className="mt-2 p-2 bg-black rounded text-zinc-400 font-mono text-[11px] leading-relaxed border border-zinc-800">
                   {session.rawNotes}
                 </p>
               </details>

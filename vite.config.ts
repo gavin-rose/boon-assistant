@@ -12,7 +12,7 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
       manifest: {
-        name: 'Boon - Hybrid Event Copilot',
+        name: 'Boon: Event Assistant',
         short_name: 'Boon',
         description: 'Hybrid on-device & cloud AI copilot for conferences, sessions, and interactions.',
         theme_color: '#0f172a',

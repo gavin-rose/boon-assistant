@@ -7,7 +7,7 @@ import { SettingsModal } from './components/SettingsModal';
 import { SessionData, InteractionData, SummaryReport } from './types';
 import { checkOnDeviceNanoAvailability } from './services/aiService';
 import { initFirebase } from './services/firebase';
-import { BookOpen, Users, Cloud, Info } from 'lucide-react';
+import { BookOpen, Users, Cloud } from 'lucide-react';
 
 export function App() {
   const [activeTab, setActiveTab] = useState<'sessions' | 'interactions' | 'summaries'>('sessions');
@@ -98,7 +98,7 @@ export function App() {
   const effectiveOffline = !isOnline || isSimulatingOffline;
 
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col font-sans">
+    <div className="min-h-screen bg-black text-zinc-100 flex flex-col font-sans">
       <Header
         isSimulatingOffline={isSimulatingOffline}
         setIsSimulatingOffline={setIsSimulatingOffline}
@@ -110,18 +110,18 @@ export function App() {
       {/* Main Container */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 space-y-6">
         {/* Navigation Tabs */}
-        <div className="flex border-b border-slate-800 space-x-1 sm:space-x-4">
+        <div className="flex border-b border-zinc-800 space-x-1 sm:space-x-4">
           <button
             onClick={() => setActiveTab('sessions')}
             className={`flex items-center gap-2 py-3 px-4 font-semibold text-xs sm:text-sm border-b-2 transition cursor-pointer ${
               activeTab === 'sessions'
-                ? 'border-indigo-500 text-indigo-400 bg-indigo-500/5'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-emerald-500 text-emerald-400 bg-emerald-950/20'
+                : 'border-transparent text-zinc-400 hover:text-zinc-200'
             }`}
           >
             <BookOpen className="h-4 w-4" />
             <span>Sessions</span>
-            <span className="ml-1.5 px-2 py-0.5 rounded-full text-[10px] bg-slate-800 text-slate-300">
+            <span className="ml-1.5 px-2 py-0.5 rounded-full text-[10px] bg-zinc-900 border border-zinc-800 text-zinc-300">
               {sessions.length}
             </span>
           </button>
@@ -130,13 +130,13 @@ export function App() {
             onClick={() => setActiveTab('interactions')}
             className={`flex items-center gap-2 py-3 px-4 font-semibold text-xs sm:text-sm border-b-2 transition cursor-pointer ${
               activeTab === 'interactions'
-                ? 'border-indigo-500 text-indigo-400 bg-indigo-500/5'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-emerald-500 text-emerald-400 bg-emerald-950/20'
+                : 'border-transparent text-zinc-400 hover:text-zinc-200'
             }`}
           >
             <Users className="h-4 w-4" />
             <span>Interactions</span>
-            <span className="ml-1.5 px-2 py-0.5 rounded-full text-[10px] bg-slate-800 text-slate-300">
+            <span className="ml-1.5 px-2 py-0.5 rounded-full text-[10px] bg-zinc-900 border border-zinc-800 text-zinc-300">
               {interactions.length}
             </span>
           </button>
@@ -145,14 +145,14 @@ export function App() {
             onClick={() => setActiveTab('summaries')}
             className={`flex items-center gap-2 py-3 px-4 font-semibold text-xs sm:text-sm border-b-2 transition cursor-pointer ${
               activeTab === 'summaries'
-                ? 'border-indigo-500 text-indigo-400 bg-indigo-500/5'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-emerald-500 text-emerald-400 bg-emerald-950/20'
+                : 'border-transparent text-zinc-400 hover:text-zinc-200'
             }`}
           >
             <Cloud className="h-4 w-4" />
             <span>Summaries</span>
             {summary && (
-              <span className="ml-1.5 px-1.5 py-0.5 rounded-full text-[9px] bg-emerald-500/20 text-emerald-300">
+              <span className="ml-1.5 px-1.5 py-0.5 rounded-full text-[9px] bg-emerald-950/40 text-emerald-300 border border-emerald-600/30">
                 Ready
               </span>
             )}
@@ -188,20 +188,6 @@ export function App() {
           />
         )}
       </main>
-
-      {/* Footer info banner */}
-      <footer className="border-t border-slate-900 bg-slate-950/80 py-4 px-6 text-center text-xs text-slate-500">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-          <span>
-            Built for <strong>#BuildHybridAI</strong> • Apache-2.0 License • Firebase AI Logic Hybrid Inference
-          </span>
-          <div className="flex items-center gap-2 text-[11px] text-slate-400">
-            <span>⚡ Fast On-Device Triage</span>
-            <span>•</span>
-            <span>☁️ Deep Cloud Synthesis</span>
-          </div>
-        </div>
-      </footer>
 
       {/* Settings Modal */}
       <SettingsModal

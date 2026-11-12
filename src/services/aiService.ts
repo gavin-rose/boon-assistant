@@ -424,7 +424,7 @@ Our meetings with ${companyList} demonstrated significant competitive interest i
     followUpEmails: interactions.map((it) => ({
       recipient: it.contactName || 'Partner',
       company: it.company || 'Team',
-      subject: `Great speaking with you at the conference — next steps on ${it.company}`,
+      subject: `Great speaking with you at the conference: next steps on ${it.company}`,
       body: `Hi ${it.contactName || 'there'},\n\nIt was great connecting with you today at the event. I really enjoyed hearing about what ${it.company} is building, particularly regarding ${it.structuredData?.topicsDiscussed?.[0] || 'your core platform'}.\n\nBased on our conversation, I think there is a strong alignment with our technical roadmap. I'd love to set up a quick 20-minute follow-up call next week to explore a potential pilot and review integration details.\n\nLet me know what days work best for your team.\n\nBest regards,\nAttendee`
     })),
     actionPlan: [
