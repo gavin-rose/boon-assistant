@@ -6,7 +6,7 @@ import {
   persistentMultipleTabManager,
   Firestore 
 } from 'firebase/firestore';
-import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
+import { initializeAppCheck, ReCaptchaEnterpriseProvider, ReCaptchaV3Provider } from 'firebase/app-check';
 
 const defaultFirebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "YOUR_VITE_FIREBASE_API_KEY",
@@ -49,7 +49,7 @@ export function initFirebase() {
       const recaptchaSiteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
       if (recaptchaSiteKey) {
         initializeAppCheck(app, {
-          provider: new ReCaptchaV3Provider(recaptchaSiteKey),
+          provider: new ReCaptchaEnterpriseProvider(recaptchaSiteKey),
           isTokenAutoRefreshEnabled: true
         });
         console.log("Firebase App Check initialized");
