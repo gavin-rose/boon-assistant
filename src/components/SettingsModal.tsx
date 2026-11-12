@@ -39,9 +39,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-zinc-400 hover:text-white hover:bg-zinc-900 transition cursor-pointer"
+            className="p-1.5 rounded-lg bg-transparent border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-700 transition cursor-pointer"
           >
-            <X className="h-5 w-5" />
+            <X className="h-4 w-4" />
           </button>
         </div>
 
@@ -120,7 +120,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 localStorage.removeItem('boon_firebase_config');
                 window.location.reload();
               }}
-              className="px-3 py-1.5 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-zinc-400 border-zinc-800 hover:text-zinc-200 hover:border-zinc-700"
+              className="px-3 py-1 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700"
             >
               Reset to Defaults
             </button>
@@ -129,13 +129,13 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               <button
                 type="button"
                 onClick={onClose}
-                className="px-3 py-1.5 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700"
+                className="px-3 py-1 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700"
               >
                 Close
               </button>
               <button
                 type="submit"
-                className="px-3 py-1.5 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-emerald-400 border-emerald-600/50 hover:bg-emerald-950/30 hover:border-emerald-500 flex items-center gap-1.5"
+                className="px-3 py-1 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700 flex items-center gap-1.5"
               >
                 {savedSuccess ? (
                   <>

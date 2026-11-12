@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mic, MicOff, Plus, Sparkles, BookOpen, MessageSquare, Zap, Trash2 } from 'lucide-react';
+import { Mic, MicOff, Plus, Sparkles, BookOpen, MessageSquare, Zap, Trash2, Info, Pencil } from 'lucide-react';
 import { SessionData } from '../types';
 import { parseSessionNotesWithAI } from '../services/aiService';
 
@@ -120,13 +120,13 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({
             Conference Sessions and Keynotes
           </h2>
           <p className="text-xs text-zinc-400">
-            Jot down rapid thoughts or dictate live. Gemini Nano structures takeaways, explains jargon, and drafts Q&A questions instantly.
+            Jot down rapid thoughts or dictate live.
           </p>
         </div>
 
         <button
           onClick={() => setIsOpenForm(!isOpenForm)}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700 shrink-0"
+          className="flex items-center gap-1.5 px-3 py-1 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700 shrink-0"
         >
           <Plus className="h-3.5 w-3.5 text-emerald-400" />
           <span>Session</span>
@@ -141,16 +141,16 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({
         >
           <div className="flex items-center justify-between pb-2 border-b border-zinc-800">
             <span className="text-sm font-semibold text-zinc-200 flex items-center gap-2">
-              <Zap className="h-4 w-4 text-amber-400" />
-              On-Device Session Scribe (Gemini Nano)
+              <Pencil className="h-4 w-4 text-emerald-400" />
+              Local Session Scribe
             </span>
             <button
               type="button"
               onClick={handleLoadSample}
-              className="flex items-center gap-1 px-2.5 py-1 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-emerald-400 border-zinc-800 hover:border-emerald-500/40"
+              className="flex items-center gap-1.5 px-3 py-1 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700"
             >
-              <Sparkles className="h-3 w-3" />
-              <span>Sample Keynote</span>
+              <Info className="h-3.5 w-3.5 text-emerald-400" />
+              <span>Load Example</span>
             </button>
           </div>
 
@@ -159,7 +159,7 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({
               <label className="text-xs font-medium text-zinc-400">Session Title</label>
               <input
                 type="text"
-                placeholder="e.g. Keynote: Local-First AI"
+                placeholder="Keynote: Local-First AI"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 className="w-full mt-1 px-3 py-2 bg-black border border-zinc-800 rounded-lg text-sm text-zinc-100 focus:outline-none focus:border-emerald-500"
@@ -169,7 +169,7 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({
               <label className="text-xs font-medium text-zinc-400">Speaker / Track</label>
               <input
                 type="text"
-                placeholder="e.g. Dr. Elena Rostova"
+                placeholder="Gavin Rose"
                 value={speaker}
                 onChange={(e) => setSpeaker(e.target.value)}
                 className="w-full mt-1 px-3 py-2 bg-black border border-zinc-800 rounded-lg text-sm text-zinc-100 focus:outline-none focus:border-emerald-500"
@@ -179,7 +179,7 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({
               <label className="text-xs font-medium text-zinc-400">Room / Hall</label>
               <input
                 type="text"
-                placeholder="e.g. Grand Ballroom A"
+                placeholder="Grand Ballroom A"
                 value={room}
                 onChange={(e) => setRoom(e.target.value)}
                 className="w-full mt-1 px-3 py-2 bg-black border border-zinc-800 rounded-lg text-sm text-zinc-100 focus:outline-none focus:border-emerald-500"
@@ -190,24 +190,23 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({
           <div>
             <div className="flex items-center justify-between mb-1">
               <label className="text-xs font-medium text-zinc-400">
-                Raw Notes / Real-Time Thoughts
+                Raw Notes and Thoughts
               </label>
               <button
                 type="button"
                 onClick={toggleRecording}
-                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent ${
-                  isRecording
-                    ? 'text-amber-400 border-amber-500/50 animate-pulse'
-                    : 'text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700'
-                }`}
+                className={`flex items-center gap-1.5 px-3 py-1 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent ${isRecording
+                  ? 'text-amber-300 border-amber-500/60 animate-pulse'
+                  : 'text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700'
+                  }`}
               >
-                {isRecording ? <MicOff className="h-3.5 w-3.5" /> : <Mic className="h-3.5 w-3.5" />}
-                <span>{isRecording ? 'Listening...' : 'Voice Dictate'}</span>
+                {isRecording ? <MicOff className="h-3.5 w-3.5 text-amber-400" /> : <Mic className="h-3.5 w-3.5 text-emerald-400" />}
+                <span>{isRecording ? 'Listening...' : 'Start Dictating'}</span>
               </button>
             </div>
             <textarea
               rows={4}
-              placeholder="Type rough bullets or speak freely. Mention any dense acronyms or concepts you want unpacked..."
+              placeholder="Type rough bullets or speak freely."
               value={rawNotes}
               onChange={(e) => setRawNotes(e.target.value)}
               className="w-full px-3 py-2 bg-black border border-zinc-800 rounded-lg text-sm text-zinc-100 focus:outline-none focus:border-emerald-500 font-mono"
@@ -219,24 +218,24 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({
             <button
               type="button"
               onClick={() => setIsOpenForm(false)}
-              className="px-3 py-1.5 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700"
+              className="px-3 py-1 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isProcessing || !rawNotes.trim()}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-emerald-400 border-emerald-600/50 hover:bg-emerald-950/30 hover:border-emerald-500 disabled:opacity-50"
+              className="flex items-center gap-1.5 px-3 py-1 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700 disabled:opacity-50"
             >
               {isProcessing ? (
                 <>
-                  <Zap className="h-3.5 w-3.5 animate-spin text-amber-400" />
+                  <Sparkles className="h-3.5 w-3.5 animate-spin text-amber-400" />
                   <span>Processing...</span>
                 </>
               ) : (
                 <>
-                  <Zap className="h-3.5 w-3.5 text-amber-400" />
-                  <span>Structure with Gemini Nano</span>
+                  <Sparkles className="h-3.5 w-3.5 text-amber-400" />
+                  <span>Structure</span>
                 </>
               )}
             </button>
@@ -270,38 +269,13 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({
                     <span>{session.room}</span>
                   </div>
                 </div>
-
-                <div className="flex items-center gap-2">
-                  {/* Latency / Model Badge */}
-                  <span
-                    className={`text-xs px-2.5 py-1 rounded-full font-mono flex items-center gap-1.5 border ${
-                      session.inferenceSource === 'on_device'
-                        ? 'bg-amber-950/30 text-amber-300 border-amber-600/40'
-                        : 'bg-emerald-950/30 text-emerald-300 border-emerald-600/40'
-                    }`}
-                  >
-                    <Zap className="h-3 w-3 text-amber-400" />
-                    <span>
-                      {session.inferenceSource === 'on_device' ? 'Local' : 'Cloud'}{' '}
-                      [{session.latencyMs}ms]
-                    </span>
-                  </span>
-
-                  <button
-                    onClick={() => onDeleteSession(session.id)}
-                    className="p-1.5 text-zinc-500 hover:text-amber-400 transition cursor-pointer"
-                    title="Delete session"
-                  >
-                    <Trash2 className="h-4 w-4" />
-                  </button>
-                </div>
               </div>
 
               {/* Takeaways */}
               {session.structuredNotes?.takeaways && session.structuredNotes.takeaways.length > 0 && (
                 <div>
                   <h4 className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-1.5">
-                    Key Actionable Takeaways
+                    Takeaways
                   </h4>
                   <ul className="space-y-1">
                     {session.structuredNotes.takeaways.map((point, idx) => (
@@ -318,7 +292,7 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({
               {session.structuredNotes?.jargonGlossary && session.structuredNotes.jargonGlossary.length > 0 && (
                 <div>
                   <h4 className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">
-                    Live Jargon Glossary (Explained On-Device)
+                    Buzz Words
                   </h4>
                   <div className="flex flex-wrap gap-2">
                     {session.structuredNotes.jargonGlossary.map((j, idx) => (
@@ -351,9 +325,20 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({
                 </div>
               )}
 
+              {/* Delete */}
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => onDeleteSession(session.id)}
+                  className="flex items-center gap-1.5 px-3 py-1 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700 disabled:opacity-50"
+                  title="Delete session"
+                >
+                  <span className="text-red-400">Delete Entry</span>
+                </button>
+              </div>
+
               {/* Raw notes expandable/collapsible */}
               <details className="text-xs text-zinc-500 pt-1">
-                <summary className="cursor-pointer hover:text-zinc-300">View raw notes</summary>
+                <summary className="cursor-pointer hover:text-zinc-300">View Raw</summary>
                 <p className="mt-2 p-2 bg-black rounded text-zinc-400 font-mono text-[11px] leading-relaxed border border-zinc-800">
                   {session.rawNotes}
                 </p>

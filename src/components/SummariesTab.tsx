@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Cloud, Sparkles, Copy, Check, Mail, TrendingUp, FileText, CheckSquare, RefreshCw } from 'lucide-react';
+import { Cloud, Sparkles, Copy, Check, Mail, TrendingUp, FileText, CheckSquare, RefreshCw, Info } from 'lucide-react';
 import { SessionData, InteractionData, SummaryReport } from '../types';
 import { generateCloudSummaryReport } from '../services/aiService';
 
@@ -53,17 +53,17 @@ export const SummariesTab: React.FC<SummariesTabProps> = ({
         <div>
           <h2 className="text-lg font-bold text-white flex items-center gap-2">
             <Cloud className="h-5 w-5 text-emerald-400" />
-            Executive Synthesis and Follow-Ups
+            Summaries and Follow-Ups
           </h2>
           <p className="text-xs text-zinc-400">
-            Powered by Firebase AI Logic Cloud. Cross-correlates all {sessions.length} sessions and {interactions.length} interactions into strategic debriefs and personalized outreach.
+            Correlates all sessions and interactions into strategic debriefs and personalized outreach.
           </p>
         </div>
 
         <button
           onClick={handleGenerate}
           disabled={isGenerating || totalItems === 0}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-emerald-400 border-emerald-600/50 hover:bg-emerald-950/30 hover:border-emerald-500 disabled:opacity-50 shrink-0"
+          className="flex items-center gap-1.5 px-3 py-1 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700 disabled:opacity-50 shrink-0"
         >
           {isGenerating ? (
             <>
@@ -72,7 +72,7 @@ export const SummariesTab: React.FC<SummariesTabProps> = ({
             </>
           ) : (
             <>
-              <Sparkles className="h-3.5 w-3.5 text-amber-400" />
+              <Sparkles className="h-3.5 w-3.5 text-emerald-400" />
               <span>
                 {summary ? 'Resynthesize' : 'Synthesize'}
               </span>
@@ -101,17 +101,9 @@ export const SummariesTab: React.FC<SummariesTabProps> = ({
               Ready to Synthesize {sessions.length} Sessions and {interactions.length} Interactions
             </h3>
             <p className="text-xs text-zinc-400 max-w-md mx-auto mt-1">
-              Click the button above to trigger Firebase AI Logic Cloud inference. The cloud engine will identify overarching trends, compose executive briefing memos, and draft tailored follow-up emails.
+              Click the button above to synthesize! The cloud engine will identify overarching trends, compose executive briefing memos, and draft tailored follow-up emails.
             </p>
           </div>
-          <button
-            onClick={handleGenerate}
-            disabled={isGenerating}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-emerald-400 border-emerald-600/50 hover:bg-emerald-950/30 hover:border-emerald-500 disabled:opacity-50"
-          >
-            <Cloud className="h-3.5 w-3.5 text-emerald-400" />
-            <span>Launch Cloud Synthesis Engine</span>
-          </button>
         </div>
       ) : (
         /* Render Generated Summary Report */
@@ -119,15 +111,8 @@ export const SummariesTab: React.FC<SummariesTabProps> = ({
           {/* Metadata pill bar */}
           <div className="flex flex-wrap items-center justify-between gap-3 bg-zinc-950 p-3 rounded-xl border border-zinc-800 text-xs">
             <div className="flex items-center gap-3 text-zinc-400">
-              <span>Synthesized: <strong>{summary.sessionCount} Sessions</strong>, <strong>{summary.interactionCount} Interactions</strong></span>
-              <span>•</span>
-              <span>{new Date(summary.generatedAt).toLocaleTimeString()}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-xs px-2.5 py-1 rounded-full font-mono flex items-center gap-1.5 border bg-emerald-950/30 text-emerald-300 border-emerald-600/40">
-                <Cloud className="h-3 w-3 text-emerald-400" />
-                <span>Cloud [{summary.latencyMs}ms]</span>
-              </span>
+              <Info className="h-4 w-4" />
+              <span>Synthesized: <strong>{summary.sessionCount} Sessions</strong>, <strong>{summary.interactionCount} Interactions</strong> at {new Date(summary.generatedAt).toLocaleTimeString()}</span>
             </div>
           </div>
 
@@ -136,14 +121,14 @@ export const SummariesTab: React.FC<SummariesTabProps> = ({
             <div className="flex items-center justify-between pb-3 border-b border-zinc-800">
               <h3 className="text-sm font-bold text-white flex items-center gap-2">
                 <FileText className="h-4 w-4 text-emerald-400" />
-                Executive Trip ROI and Debrief Memo
+                Debriefing
               </h3>
               <button
                 onClick={() => copyToClipboard(summary.executiveBriefing)}
-                className="flex items-center gap-1.5 text-xs text-emerald-400 hover:text-emerald-300 transition cursor-pointer"
+                className="flex items-center gap-1.5 px-3 py-1 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700"
               >
-                {copiedMemo ? <Check className="h-3.5 w-3.5 text-emerald-400" /> : <Copy className="h-3.5 w-3.5" />}
-                <span>{copiedMemo ? 'Copied Memo' : 'Copy Memo'}</span>
+                {copiedMemo ? <Check className="h-3.5 w-3.5 text-emerald-400" /> : <Copy className="h-3.5 w-3.5 text-zinc-400" />}
+                <span>{copiedMemo ? 'Copied' : 'Copy'}</span>
               </button>
             </div>
             <div className="text-xs text-zinc-300 leading-relaxed space-y-3 whitespace-pre-line bg-black p-4 rounded-xl border border-zinc-800">
@@ -155,8 +140,8 @@ export const SummariesTab: React.FC<SummariesTabProps> = ({
           <div className="bg-zinc-950 border border-zinc-800 rounded-2xl p-6 space-y-4">
             <div className="flex items-center justify-between pb-3 border-b border-zinc-800">
               <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                <TrendingUp className="h-4 w-4 text-amber-400" />
-                Detected Cross-Session Industry Trends
+                <TrendingUp className="h-4 w-4 text-emerald-400" />
+                Detected Trends
               </h3>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -165,7 +150,7 @@ export const SummariesTab: React.FC<SummariesTabProps> = ({
                   key={idx}
                   className="bg-black p-4 rounded-xl border border-zinc-800 flex flex-col justify-between"
                 >
-                  <span className="text-[10px] font-bold text-amber-400 uppercase tracking-wider mb-2">
+                  <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider mb-2">
                     Trend #{idx + 1}
                   </span>
                   <p className="text-xs text-zinc-200 leading-relaxed">{trend}</p>
@@ -194,12 +179,12 @@ export const SummariesTab: React.FC<SummariesTabProps> = ({
                         <span className="font-semibold text-white">To: {email.recipient} ({email.company})</span>
                         <button
                           onClick={() => copyToClipboard(`Subject: ${email.subject}\n\n${email.body}`, idx)}
-                          className="text-xs text-emerald-400 hover:text-emerald-300 flex items-center gap-1 cursor-pointer"
+                          className="flex items-center gap-1.5 px-3 py-1 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700"
                         >
                           {copiedIndex === idx ? (
                             <Check className="h-3.5 w-3.5 text-emerald-400" />
                           ) : (
-                            <Copy className="h-3.5 w-3.5" />
+                            <Copy className="h-3.5 w-3.5 text-zinc-400" />
                           )}
                           <span>{copiedIndex === idx ? 'Copied' : 'Copy'}</span>
                         </button>

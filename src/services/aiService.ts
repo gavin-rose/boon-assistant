@@ -402,7 +402,7 @@ function heuristicInteractionParser(rawNotes: string, contactName?: string, comp
       `Send follow-up email to ${contactName || 'contact'} referencing our booth conversation`,
       'Brief internal architecture team on capabilities and schedule a 30-min discovery call'
     ],
-    missingDetailsAlert: hasEmail ? null : `⚠️ Missing direct email or LinkedIn URL for ${contactName || 'this contact'}. Remember to verify contact info before leaving the hall.`
+    missingDetailsAlert: hasEmail ? null : `Missing direct email or LinkedIn URL for ${contactName || 'this contact'}. Remember to verify contact info before leaving the hall.`
   };
 }
 

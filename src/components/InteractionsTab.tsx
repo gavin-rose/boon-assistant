@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mic, MicOff, Plus, Sparkles, Users, Zap, AlertTriangle, CheckCircle2, Trash2 } from 'lucide-react';
+import { Mic, MicOff, Plus, Sparkles, Users, Zap, AlertTriangle, CheckCircle2, Trash2, Pencil, Info } from 'lucide-react';
 import { InteractionData } from '../types';
 import { parseInteractionNotesWithAI } from '../services/aiService';
 
@@ -120,16 +120,16 @@ export const InteractionsTab: React.FC<InteractionsTabProps> = ({
         <div>
           <h2 className="text-lg font-bold text-white flex items-center gap-2">
             <Users className="h-5 w-5 text-emerald-400" />
-            Booth Visits and 1-on-1 Interactions
+            Booth Visits and Other Interactions
           </h2>
           <p className="text-xs text-zinc-400">
-            Log quick notes after an interaction. Gemini Nano structures lead details, urgency, and follow-ups on device.
+            Log quick notes after an interaction.
           </p>
         </div>
 
         <button
           onClick={() => setIsOpenForm(!isOpenForm)}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700 shrink-0"
+          className="flex items-center gap-1.5 px-3 py-1 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700 shrink-0"
         >
           <Plus className="h-3.5 w-3.5 text-emerald-400" />
           <span>Interaction</span>
@@ -144,25 +144,25 @@ export const InteractionsTab: React.FC<InteractionsTabProps> = ({
         >
           <div className="flex items-center justify-between pb-2 border-b border-zinc-800">
             <span className="text-sm font-semibold text-zinc-200 flex items-center gap-2">
-              <Zap className="h-4 w-4 text-amber-400" />
-              On-Device Lead Triage (Gemini Nano)
+              <Pencil className="h-4 w-4 text-emerald-400" />
+              Local Interaction Triage
             </span>
             <button
               type="button"
               onClick={handleLoadSample}
-              className="flex items-center gap-1 px-2.5 py-1 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-emerald-400 border-zinc-800 hover:border-emerald-500/40"
+              className="flex items-center gap-1.5 px-3 py-1 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700"
             >
-              <Sparkles className="h-3 w-3" />
-              <span>Sample Booth Chat</span>
+              <Info className="h-3.5 w-3.5 text-emerald-400" />
+              <span>Load Example</span>
             </button>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
-              <label className="text-xs font-medium text-zinc-400">Contact Person</label>
+              <label className="text-xs font-medium text-zinc-400">Contact Name</label>
               <input
                 type="text"
-                placeholder="e.g. Marcus Vance"
+                placeholder="Ross Graham"
                 value={contactName}
                 onChange={(e) => setContactName(e.target.value)}
                 className="w-full mt-1 px-3 py-2 bg-black border border-zinc-800 rounded-lg text-sm text-zinc-100 focus:outline-none focus:border-emerald-500"
@@ -172,7 +172,7 @@ export const InteractionsTab: React.FC<InteractionsTabProps> = ({
               <label className="text-xs font-medium text-zinc-400">Company / Organization</label>
               <input
                 type="text"
-                placeholder="e.g. VectorStream Cloud"
+                placeholder="Professional Company Inc."
                 value={company}
                 onChange={(e) => setCompany(e.target.value)}
                 className="w-full mt-1 px-3 py-2 bg-black border border-zinc-800 rounded-lg text-sm text-zinc-100 focus:outline-none focus:border-emerald-500"
@@ -182,7 +182,7 @@ export const InteractionsTab: React.FC<InteractionsTabProps> = ({
               <label className="text-xs font-medium text-zinc-400">Booth / Hall Location</label>
               <input
                 type="text"
-                placeholder="e.g. Booth 614 (Hall B)"
+                placeholder="Booth 614 (Hall B)"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
                 className="w-full mt-1 px-3 py-2 bg-black border border-zinc-800 rounded-lg text-sm text-zinc-100 focus:outline-none focus:border-emerald-500"
@@ -198,19 +198,19 @@ export const InteractionsTab: React.FC<InteractionsTabProps> = ({
               <button
                 type="button"
                 onClick={toggleRecording}
-                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent ${
+                className={`flex items-center gap-1.5 px-3 py-1 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent ${
                   isRecording
-                    ? 'text-amber-400 border-amber-500/50 animate-pulse'
+                    ? 'text-amber-300 border-amber-500/60 animate-pulse'
                     : 'text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700'
                 }`}
               >
-                {isRecording ? <MicOff className="h-3.5 w-3.5" /> : <Mic className="h-3.5 w-3.5" />}
-                <span>{isRecording ? 'Listening...' : 'Voice Dictate'}</span>
+                {isRecording ? <MicOff className="h-3.5 w-3.5 text-amber-400" /> : <Mic className="h-3.5 w-3.5 text-emerald-400" />}
+                <span>{isRecording ? 'Listening...' : 'Start Dictating'}</span>
               </button>
             </div>
             <textarea
               rows={4}
-              placeholder="What did you discuss? Mention pricing, feature requirements, POC interest, or next steps..."
+              placeholder="What did you discuss?"
               value={rawNotes}
               onChange={(e) => setRawNotes(e.target.value)}
               className="w-full px-3 py-2 bg-black border border-zinc-800 rounded-lg text-sm text-zinc-100 focus:outline-none focus:border-emerald-500 font-mono"
@@ -222,24 +222,24 @@ export const InteractionsTab: React.FC<InteractionsTabProps> = ({
             <button
               type="button"
               onClick={() => setIsOpenForm(false)}
-              className="px-3 py-1.5 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700"
+              className="px-3 py-1 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isProcessing || !rawNotes.trim()}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-emerald-400 border-emerald-600/50 hover:bg-emerald-950/30 hover:border-emerald-500 disabled:opacity-50"
+              className="flex items-center gap-1.5 px-3 py-1 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700 disabled:opacity-50"
             >
               {isProcessing ? (
                 <>
-                  <Zap className="h-3.5 w-3.5 animate-spin text-amber-400" />
+                  <Sparkles className="h-3.5 w-3.5 animate-spin text-amber-400" />
                   <span>Processing...</span>
                 </>
               ) : (
                 <>
-                  <Zap className="h-3.5 w-3.5 text-amber-400" />
-                  <span>Structure with Gemini Nano</span>
+                  <Sparkles className="h-3.5 w-3.5 text-amber-400" />
+                  <span>Structure</span>
                 </>
               )}
             </button>
@@ -291,38 +291,13 @@ export const InteractionsTab: React.FC<InteractionsTabProps> = ({
                     <span className="text-zinc-300">{it.structuredData?.role}</span>
                   </div>
                 </div>
-
-                <div className="flex items-center gap-2">
-                  <span
-                    className={`text-xs px-2.5 py-1 rounded-full font-mono flex items-center gap-1.5 border ${
-                      it.inferenceSource === 'on_device'
-                        ? 'bg-amber-950/30 text-amber-300 border-amber-600/40'
-                        : 'bg-emerald-950/30 text-emerald-300 border-emerald-600/40'
-                    }`}
-                  >
-                    <Zap className="h-3 w-3 text-amber-400" />
-                    <span>
-                      {it.inferenceSource === 'on_device' ? 'Local' : 'Cloud'}{' '}
-                      [{it.latencyMs}ms]
-                    </span>
-                  </span>
-
-                  <button
-                    onClick={() => onDeleteInteraction(it.id)}
-                    className="p-1.5 text-zinc-500 hover:text-amber-400 transition cursor-pointer"
-                    title="Delete interaction"
-                  >
-                    <Trash2 className="h-4 w-4" />
-                  </button>
-                </div>
               </div>
 
               {/* Missing Details Alert Banner (The on-the-spot triage reminder) */}
               {it.structuredData?.missingDetailsAlert && (
                 <div className="bg-amber-950/30 border border-amber-500/40 rounded-xl p-3 flex items-start gap-2.5 text-xs text-amber-300">
-                  <AlertTriangle className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-semibold block">On-Site Attention Required:</span>
+                    <span className="font-semibold block">Attention:</span>
                     <span>{it.structuredData.missingDetailsAlert}</span>
                   </div>
                 </div>
@@ -332,7 +307,7 @@ export const InteractionsTab: React.FC<InteractionsTabProps> = ({
               {it.structuredData?.dealOrOpportunity && (
                 <div>
                   <h4 className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-1">
-                    Opportunity / Deal Potential
+                    Opportunities
                   </h4>
                   <p className="text-xs text-zinc-200 bg-black p-2.5 rounded-lg border border-zinc-800">
                     {it.structuredData.dealOrOpportunity}
@@ -344,7 +319,7 @@ export const InteractionsTab: React.FC<InteractionsTabProps> = ({
               {it.structuredData?.topicsDiscussed && it.structuredData.topicsDiscussed.length > 0 && (
                 <div>
                   <h4 className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-1.5">
-                    Topics Discussed
+                    Discussion Points
                   </h4>
                   <ul className="space-y-1">
                     {it.structuredData.topicsDiscussed.map((topic, idx) => (
@@ -361,12 +336,12 @@ export const InteractionsTab: React.FC<InteractionsTabProps> = ({
               {it.structuredData?.actionItems && it.structuredData.actionItems.length > 0 && (
                 <div>
                   <h4 className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-1.5">
-                    Immediate Action Items
+                    Action Items
                   </h4>
                   <div className="space-y-1">
                     {it.structuredData.actionItems.map((item, idx) => (
-                      <div key={idx} className="flex items-center gap-2 text-xs text-emerald-300">
-                        <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
+                      <div key={idx} className="flex gap-2 text-xs">
+                        <span className="text-emerald-400 font-bold">•</span>
                         <span>{item}</span>
                       </div>
                     ))}
@@ -374,9 +349,20 @@ export const InteractionsTab: React.FC<InteractionsTabProps> = ({
                 </div>
               )}
 
+              {/* Delete */}
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => onDeleteInteraction(it.id)}
+                  className="flex items-center gap-1.5 px-3 py-1 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700 disabled:opacity-50"
+                  title="Delete session"
+                >
+                  <span className="text-red-400">Delete Entry</span>
+                </button>
+              </div>
+
               {/* Raw notes expandable/collapsible */}
               <details className="text-xs text-zinc-500 pt-1">
-                <summary className="cursor-pointer hover:text-zinc-300">View raw conversation notes</summary>
+                <summary className="cursor-pointer hover:text-zinc-300">View raw</summary>
                 <p className="mt-2 p-2 bg-black rounded text-zinc-400 font-mono text-[11px] leading-relaxed border border-zinc-800">
                   {it.rawNotes}
                 </p>
