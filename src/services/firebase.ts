@@ -6,7 +6,7 @@ import {
   persistentMultipleTabManager,
   Firestore 
 } from 'firebase/firestore';
-import { initializeAppCheck, ReCaptchaEnterpriseProvider, ReCaptchaV3Provider } from 'firebase/app-check';
+import { initializeAppCheck, ReCaptchaEnterpriseProvider } from 'firebase/app-check';
 
 const defaultFirebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "YOUR_VITE_FIREBASE_API_KEY",

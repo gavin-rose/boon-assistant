@@ -109,7 +109,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               <span>Firebase App Check Ready</span>
             </div>
             <p>
-              Preconfigured with debug tokens for Devpost evaluation. In production, App Check validates requests using Google reCAPTCHA v3.
+              Preconfigured with debug tokens for Devpost evaluation. In production, App Check validates requests.
             </p>
           </div>
 
