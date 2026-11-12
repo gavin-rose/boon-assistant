@@ -129,10 +129,10 @@ export const InteractionsTab: React.FC<InteractionsTabProps> = ({
 
         <button
           onClick={() => setIsOpenForm(!isOpenForm)}
-          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 font-semibold text-xs text-black transition cursor-pointer"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700 shrink-0"
         >
-          <Plus className="h-4 w-4" />
-          <span>New Interaction</span>
+          <Plus className="h-3.5 w-3.5 text-emerald-400" />
+          <span>Interaction Note</span>
         </button>
       </div>
 
@@ -150,10 +150,10 @@ export const InteractionsTab: React.FC<InteractionsTabProps> = ({
             <button
               type="button"
               onClick={handleLoadSample}
-              className="text-xs text-emerald-400 hover:text-emerald-300 underline flex items-center gap-1 cursor-pointer"
+              className="flex items-center gap-1 px-2.5 py-1 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-emerald-400 border-zinc-800 hover:border-emerald-500/40"
             >
-              <Sparkles className="h-3.5 w-3.5" />
-              Load Sample Booth Chat
+              <Sparkles className="h-3 w-3" />
+              <span>Sample Booth Chat</span>
             </button>
           </div>
 
@@ -198,10 +198,10 @@ export const InteractionsTab: React.FC<InteractionsTabProps> = ({
               <button
                 type="button"
                 onClick={toggleRecording}
-                className={`text-xs px-2.5 py-1 rounded-md flex items-center gap-1.5 transition ${
+                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent ${
                   isRecording
-                    ? 'bg-amber-500 text-black animate-pulse font-semibold'
-                    : 'bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white'
+                    ? 'text-amber-400 border-amber-500/50 animate-pulse'
+                    : 'text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700'
                 }`}
               >
                 {isRecording ? <MicOff className="h-3.5 w-3.5" /> : <Mic className="h-3.5 w-3.5" />}
@@ -218,27 +218,27 @@ export const InteractionsTab: React.FC<InteractionsTabProps> = ({
             />
           </div>
 
-          <div className="flex justify-end gap-3 pt-2">
+          <div className="flex justify-end gap-2 pt-2">
             <button
               type="button"
               onClick={() => setIsOpenForm(false)}
-              className="px-4 py-2 text-xs font-medium text-zinc-400 hover:text-white cursor-pointer"
+              className="px-3 py-1.5 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isProcessing || !rawNotes.trim()}
-              className="flex items-center gap-2 px-5 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-black font-semibold text-xs rounded-xl transition cursor-pointer"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-emerald-400 border-emerald-600/50 hover:bg-emerald-950/30 hover:border-emerald-500 disabled:opacity-50"
             >
               {isProcessing ? (
                 <>
-                  <Zap className="h-4 w-4 animate-spin text-black" />
-                  <span>Structuring on Device...</span>
+                  <Zap className="h-3.5 w-3.5 animate-spin text-amber-400" />
+                  <span>Processing...</span>
                 </>
               ) : (
                 <>
-                  <Zap className="h-4 w-4 text-black" />
+                  <Zap className="h-3.5 w-3.5 text-amber-400" />
                   <span>Structure with Gemini Nano</span>
                 </>
               )}

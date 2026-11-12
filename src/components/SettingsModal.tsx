@@ -34,7 +34,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
       <div className="bg-zinc-950 border border-zinc-800 rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-5">
         <div className="flex items-center justify-between pb-3 border-b border-zinc-800">
           <div>
-            <h3 className="text-base font-bold text-white">Firebase and System Settings</h3>
+            <h3 className="text-base font-bold text-white">Config</h3>
             <p className="text-xs text-zinc-400">Configure Firebase AI Logic, App Check, and local engine</p>
           </div>
           <button
@@ -120,7 +120,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 localStorage.removeItem('boon_firebase_config');
                 window.location.reload();
               }}
-              className="text-xs text-zinc-500 hover:text-zinc-300 underline cursor-pointer"
+              className="px-3 py-1.5 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-zinc-400 border-zinc-800 hover:text-zinc-200 hover:border-zinc-700"
             >
               Reset to Defaults
             </button>
@@ -129,21 +129,21 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               <button
                 type="button"
                 onClick={onClose}
-                className="px-4 py-2 text-xs font-medium text-zinc-400 hover:text-white cursor-pointer"
+                className="px-3 py-1.5 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700"
               >
                 Close
               </button>
               <button
                 type="submit"
-                className="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 font-semibold text-xs text-black transition flex items-center gap-1.5 cursor-pointer"
+                className="px-3 py-1.5 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-emerald-400 border-emerald-600/50 hover:bg-emerald-950/30 hover:border-emerald-500 flex items-center gap-1.5"
               >
                 {savedSuccess ? (
                   <>
-                    <CheckCircle className="h-4 w-4 text-black" />
-                    <span>Saved!</span>
+                    <CheckCircle className="h-3.5 w-3.5 text-emerald-400" />
+                    <span>Saved</span>
                   </>
                 ) : (
-                  <span>Save and Reload</span>
+                  <span>Save</span>
                 )}
               </button>
             </div>
