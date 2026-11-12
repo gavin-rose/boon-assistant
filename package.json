@@ -1,0 +1,41 @@
+{
+  "name": "boon",
+  "version": "1.0.0",
+  "description": "Boon — Hybrid On-Device & Cloud AI Event Copilot for Sessions, Interactions, and Summaries",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "firebase",
+    "hybrid-ai",
+    "gemini-nano",
+    "gemini",
+    "ai-logic",
+    "pwa",
+    "offline-first"
+  ],
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "firebase": "^13.3.0",
+    "lucide-react": "^1.72.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.7.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.5",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "tailwindcss": "^4.3.5",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8",
+    "vite-plugin-pwa": "^2.0.0"
+  }
+}
