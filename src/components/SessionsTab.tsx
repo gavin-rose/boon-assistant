@@ -120,7 +120,7 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({
             Conference Sessions and Keynotes
           </h2>
           <p className="text-xs text-zinc-400">
-            Jot down rapid thoughts or dictate live. Gemini Nano structures takeaways, explains jargon, and drafts Q&A microphone questions instantly.
+            Jot down rapid thoughts or dictate live. Gemini Nano structures takeaways, explains jargon, and drafts Q&A questions instantly.
           </p>
         </div>
 
@@ -129,7 +129,7 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700 shrink-0"
         >
           <Plus className="h-3.5 w-3.5 text-emerald-400" />
-          <span>Session Note</span>
+          <span>Session</span>
         </button>
       </div>
 
@@ -250,7 +250,7 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({
           <BookOpen className="h-10 w-10 text-zinc-600 mx-auto mb-3" />
           <h3 className="text-sm font-semibold text-zinc-300">No session notes yet</h3>
           <p className="text-xs text-zinc-500 max-w-sm mx-auto mt-1">
-            Click "New Session Note" or load the sample keynote to see on-device structuring in action.
+            Click "Session" or load the sample keynote to see on-device structuring in action.
           </p>
         </div>
       ) : (
@@ -334,12 +334,12 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({
                 </div>
               )}
 
-              {/* Microphone Q&A Polished Questions */}
+              {/* Q&A Questions */}
               {session.structuredNotes?.qaQuestions && session.structuredNotes.qaQuestions.length > 0 && (
                 <div className="bg-black p-3 rounded-xl border border-zinc-800">
                   <h4 className="text-xs font-semibold text-emerald-400 flex items-center gap-1.5 mb-1.5">
                     <MessageSquare className="h-3.5 w-3.5" />
-                    Microphone-Ready Q&A Questions
+                    Q&A Questions
                   </h4>
                   <ul className="space-y-1">
                     {session.structuredNotes.qaQuestions.map((q, idx) => (

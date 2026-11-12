@@ -63,7 +63,7 @@ Extract and structure this information into valid JSON with this exact schema:
     {"term": "Technical Term or Acronym", "definition": "Concise 1-sentence explanation"}
   ],
   "qaQuestions": [
-    "Polished, articulate question attendee can ask at the microphone during Q&A"
+    "Polished, articulate question for Q&A"
   ]
 }
 Return ONLY valid JSON. No markdown backticks, no extra text.`;
@@ -146,7 +146,7 @@ export async function parseInteractionNotesWithAI(
   latencyMs: number;
 }> {
   const startTime = performance.now();
-  const prompt = `You are a real-time event interaction co-pilot running on an attendee's device right after walking away from a booth or conversation.
+  const prompt = `You are a real-time event interaction co-pilot running on an attendee's device right after an interaction or conversation.
 Contact: "${contactName || 'Met at booth'}"
 Company: "${company || 'Company'}"
 Raw notes:

@@ -123,7 +123,7 @@ export const InteractionsTab: React.FC<InteractionsTabProps> = ({
             Booth Visits and 1-on-1 Interactions
           </h2>
           <p className="text-xs text-zinc-400">
-            Log quick notes after walking away from a booth. Gemini Nano structures lead details, assigns urgency, and warns if you forgot their email before you walk away.
+            Log quick notes after an interaction. Gemini Nano structures lead details, urgency, and follow-ups on device.
           </p>
         </div>
 
@@ -132,7 +132,7 @@ export const InteractionsTab: React.FC<InteractionsTabProps> = ({
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border font-medium text-xs transition-all cursor-pointer bg-transparent text-zinc-300 border-zinc-800 hover:text-white hover:border-zinc-700 shrink-0"
         >
           <Plus className="h-3.5 w-3.5 text-emerald-400" />
-          <span>Interaction Note</span>
+          <span>Interaction</span>
         </button>
       </div>
 
@@ -253,7 +253,7 @@ export const InteractionsTab: React.FC<InteractionsTabProps> = ({
           <Users className="h-10 w-10 text-zinc-600 mx-auto mb-3" />
           <h3 className="text-sm font-semibold text-zinc-300">No interaction records yet</h3>
           <p className="text-xs text-zinc-500 max-w-sm mx-auto mt-1">
-            Click "New Interaction" or load the sample booth chat to see on-device lead structuring.
+            Click "Interaction" or load the sample chat to see on-device structuring in action.
           </p>
         </div>
       ) : (
