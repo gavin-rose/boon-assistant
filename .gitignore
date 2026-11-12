@@ -26,3 +26,5 @@ node_modules
 
 # Firebase related files
 .firebase
+
+.env
